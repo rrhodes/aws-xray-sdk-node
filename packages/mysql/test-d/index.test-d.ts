@@ -41,15 +41,23 @@ expectType<void>(poolMySQL.getConnection(getConnectionCallback));
 
 expectType<MySQL.Query>(poolMySQL2.query('SELECT * FROM cats', queryCallback));
 expectType<MySQL.Query>(poolMySQL2.query('SELECT * FROM cats', queryCallback, segment));
-poolMySQL2.getConnection().then(result => { expectType<captureMySQL.PatchedConnection>(result); });
+poolMySQL2.getConnection().then(result => {
+  expectType<captureMySQL.PatchedConnection>(result);
+});
 
 expectType<void>(poolClusterMySQL.getConnection(getConnectionCallback));
 expectType<void>(poolClusterMySQL.getConnection('pattern', getConnectionCallback));
 expectType<void>(poolClusterMySQL.getConnection('pattern', 'selector', getConnectionCallback));
 
-poolClusterMySQL2.getConnection().then(result => { expectType<captureMySQL.PatchedConnection>(result) });
-poolClusterMySQL2.getConnection('pattern').then(result => { expectType<captureMySQL.PatchedConnection>(result) });
-poolClusterMySQL2.getConnection('pattern', 'selector').then(result => { expectType<captureMySQL.PatchedConnection>(result) });
+poolClusterMySQL2.getConnection().then(result => {
+  expectType<captureMySQL.PatchedConnection>(result);
+});
+poolClusterMySQL2.getConnection('pattern').then(result => {
+  expectType<captureMySQL.PatchedConnection>(result);
+});
+poolClusterMySQL2.getConnection('pattern', 'selector').then(result => {
+  expectType<captureMySQL.PatchedConnection>(result);
+});
 
 expectType<captureMySQL.PatchedPool>(poolClusterMySQL.of('pattern'));
 expectType<captureMySQL.PatchedPool>(poolClusterMySQL.of('pattern', 'selector'));
