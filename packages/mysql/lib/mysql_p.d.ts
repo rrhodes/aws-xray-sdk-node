@@ -110,7 +110,7 @@ declare namespace captureMySQL {
     (group: string, selector: string): Promise<PatchedConnection>;
   }
 
-  type PatchedMySQL2PoolCluster<T = MySQL.PoolCluster> = {
+  type PatchedMySQL2PoolCluster<T = MySQL2.PoolCluster> = {
     [K in keyof T]: K extends 'of'
     ? PatchedMySQL2PoolClusterOfFunction
     : K extends 'getConnection'
